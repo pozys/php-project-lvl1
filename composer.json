@@ -8,5 +8,8 @@
         }
     ],
     "license": "MIT",
+    "bin": [
+        "bin/brain-games"
+    ],
     "require": {}
 }
