@@ -11,6 +11,9 @@
     "bin": [
         "bin/brain-games"
     ],
+    "autoload": {
+        "files": ["bin/Cli.php"]
+    },
     "require": {
         "wp-cli/php-cli-tools": "^0.11.13"
     }
