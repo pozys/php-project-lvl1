@@ -4,4 +4,4 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - run: run make lint
+      - run: make lint
