@@ -2,7 +2,10 @@ install: # Установка зависимостей
 	composer install
 
 brain-games: # Запуск программы
-	php ./bin/brain-games
+	./bin/brain-games
+
+brain-even: # Запуск игры "Проверка на чётность"
+	./bin/brain-even
 
 validate: # Валидация пакета
 	composer validate
