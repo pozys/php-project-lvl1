@@ -7,6 +7,9 @@ brain-games: # Запуск программы
 brain-even: # Запуск игры "Проверка на чётность"
 	./bin/brain-even
 
+brain-calc: # Запуск игры "Калькулятор"
+	./bin/brain-calc
+
 validate: # Валидация пакета
 	composer validate
 
