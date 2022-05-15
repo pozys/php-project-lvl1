@@ -6,3 +6,5 @@
 [Even number's demonstration](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf)
 
 [Calc demonstration](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
+
+[GCD demonstration](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
