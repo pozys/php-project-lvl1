@@ -1,6 +1,6 @@
 <?php
 
-namespace Php\Project\Lvl1\Games\Calc;
+namespace Php\Project\Lvl1\Games\Gcd;
 
 use function Php\Project\Lvl1\Engine\{
     getUserName,
@@ -14,7 +14,7 @@ use function Php\Project\Lvl1\Engine\{
 function play()
 {
     $userName = getUserName();
-    printRules('What is the result of the expression?');
+    printRules('Find the greatest common divisor of given numbers.');
 
     $questions = getQuestions();
     $answers = getAnswers($questions);
@@ -27,22 +27,14 @@ function play()
 function getQuestions(): array
 {
     $questions = [];
-    $operands = getOperands();
-    $operandsCount = count($operands);
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $operand = $operands[rand(0, $operandsCount - 1)];
         $arg1 = rand(0, 100);
         $arg2 = rand(0, 100);
-        $questions[] = implode(getSeparator(), [$arg1, $operand, $arg2]);
+        $questions[] = implode(getSeparator(), [$arg1, $arg2]);
     }
 
     return $questions;
-}
-
-function getOperands(): array
-{
-    return ['+', '-', '*'];
 }
 
 function getAnswers(array $questions): array
@@ -56,18 +48,14 @@ function getAnswers(array $questions): array
     return $answers;
 }
 
-function getRightAnswer(string $question): ?int
+function getRightAnswer(string $question)
 {
-    [$arg1, $operand, $arg2] = explode(getSeparator(), $question);
+    [$arg1, $arg2] = explode(getSeparator(), $question);
 
-    switch ($operand) {
-        case '+':
-            return $arg1 + $arg2;
-        case '-':
-            return $arg1 - $arg2;
-        case '*':
-            return $arg1 * $arg2;
-        default:
-            return null;
-    }
+    return nod($arg1, $arg2);
+}
+
+function nod($a, $b)
+{
+    return $a ? nod($b % $a, $a) : $b;
 }

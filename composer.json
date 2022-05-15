@@ -10,14 +10,16 @@
     "license": "MIT",
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "brain-gcd"
     ],
     "autoload": {
         "files": [
             "src/Cli.php",
             "src/Engine.php",
             "src/Games/EvenNumbers.php",
-            "src/Games/Calc.php"
+            "src/Games/Calc.php",
+            "src/Games/Gcd.php"
         ]
     },
     "require": {

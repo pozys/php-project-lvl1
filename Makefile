@@ -10,6 +10,9 @@ brain-even: # Запуск игры "Проверка на чётность"
 brain-calc: # Запуск игры "Калькулятор"
 	./bin/brain-calc
 
+brain-gcd: # Запуск игры "НОД"
+	./bin/brain-gcd
+
 validate: # Валидация пакета
 	composer validate
 
