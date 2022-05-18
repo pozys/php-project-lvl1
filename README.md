@@ -8,3 +8,5 @@
 [Calc demonstration](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
 
 [GCD demonstration](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
+
+[Progression demonstration](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)

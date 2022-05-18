@@ -13,6 +13,9 @@ brain-calc: # Запуск игры "Калькулятор"
 brain-gcd: # Запуск игры "НОД"
 	./bin/brain-gcd
 
+brain-progression: # Запуск игры "Арифметическая прогрессия"
+	./bin/brain-progression
+
 validate: # Валидация пакета
 	composer validate
 
