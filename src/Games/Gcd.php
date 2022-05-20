@@ -38,19 +38,6 @@ function getQuestionsAnswers(): array
     return [$questions, $answers];
 }
 
-function getQuestions(): array
-{
-    $questions = [];
-
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $arg1 = rand(0, 100);
-        $arg2 = rand(0, 100);
-        $questions[] = implode(getSeparator(), [$arg1, $arg2]);
-    }
-
-    return $questions;
-}
-
 function getRightAnswer(int $arg1, int $arg2)
 {
     return nod($arg1, $arg2);
