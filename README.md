@@ -10,3 +10,5 @@
 [GCD demonstration](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
 
 [Progression demonstration](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)
+
+[Prime demonstration](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L)

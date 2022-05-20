@@ -16,6 +16,9 @@ brain-gcd: # Запуск игры "НОД"
 brain-progression: # Запуск игры "Арифметическая прогрессия"
 	./bin/brain-progression
 
+brain-prime: # Запуск игры "Простое ли число?"
+	./bin/brain-prime
+
 validate: # Валидация пакета
 	composer validate
 
