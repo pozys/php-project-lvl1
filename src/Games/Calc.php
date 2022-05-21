@@ -58,6 +58,10 @@ function getAnswers(array $questions): array
 
 function getRightAnswer(string $question): ?int
 {
+    if (empty($question)) {
+        return null;
+    }
+
     [$arg1, $operand, $arg2] = explode(getSeparator(), $question);
 
     switch ($operand) {

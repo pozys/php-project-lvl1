@@ -45,5 +45,5 @@ function getRightAnswer(int $arg1, int $arg2)
 
 function nod(int $a, int $b): int
 {
-    return $a ? nod($b % $a, $a) : $b;
+    return $a === 0 ? $b : nod($b % $a, $a);
 }
