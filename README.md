@@ -17,13 +17,20 @@
 - Утилита [make](http://www.gnu.org/software/make/)
 
 **Установка**
+- Клонировать репозиторий https://github.com/pozys/php-project-lvl1.git
+- Перейти в каталог с кодом из репозитория
+- Выполнить команду *make install*
 
-[Even number's demonstration](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf)
+[Демонстрация установки](https://asciinema.org/a/oil39L1ILuQPL0TmOkvItkKM7)
 
-[Calc demonstration](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
+**Демонстрация процесса игры:**
 
-[GCD demonstration](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
+- [Калькулятор](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
 
-[Progression demonstration](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)
+- [Прогрессия](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)
 
-[Prime demonstration](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L)
+- [Определение четного числа](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf)
+
+- [Определение наибольшего общего делителя](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
+
+- [Определение простого числа](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L)
