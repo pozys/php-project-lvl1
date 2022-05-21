@@ -23,4 +23,4 @@ validate: # Валидация пакета
 	composer validate
 
 lint: # Проверка качества кода линтером
-	composer exec --verbose phpcs -- --standard=PSR12 src bin
+	composer exec --verbose phpcs -- --standard=PSR12 src bin src/Games

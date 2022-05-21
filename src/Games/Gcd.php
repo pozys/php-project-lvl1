@@ -43,7 +43,7 @@ function getRightAnswer(int $arg1, int $arg2)
     return nod($arg1, $arg2);
 }
 
-function nod($a, $b)
+function nod(int $a, int $b): int
 {
     return $a ? nod($b % $a, $a) : $b;
 }

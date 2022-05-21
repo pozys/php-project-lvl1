@@ -46,7 +46,7 @@ function getAnswers(array $questions): array
     return $answers;
 }
 
-function getRightAnswer(string $question): string
+function getRightAnswer(int $question): string
 {
     $primes = getSuitablePrimes($question);
     return isPrime($question, $primes) ? 'yes' : 'no';
@@ -56,7 +56,7 @@ function getSuitablePrimes(int $number, array $primes = []): array
 {
     $threshold = ceil(sqrt($number));
 
-    if (empty($primes)) {
+    if (!$primes) {
         $primes[] = 2;
     }
 

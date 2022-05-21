@@ -62,11 +62,11 @@ function getRightAnswer(string $question): ?int
 
     switch ($operand) {
         case '+':
-            return $arg1 + $arg2;
+            return (int) $arg1 + (int) $arg2;
         case '-':
-            return $arg1 - $arg2;
+            return (int) $arg1 - (int) $arg2;
         case '*':
-            return $arg1 * $arg2;
+            return (int) $arg1 * (int) $arg2;
         default:
             return null;
     }

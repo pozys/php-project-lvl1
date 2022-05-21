@@ -44,7 +44,7 @@ function getGameResult(array $questions, array $answers, string $userName): bool
         if ($userAnswer === $rightAnswer) {
             sayRightAnswer();
         } else {
-            sayWrongAnswer($userAnswer, $rightAnswer, $userName);
+            sayWrongAnswer($userAnswer, $rightAnswer);
             $isWinner = false;
         }
     }
