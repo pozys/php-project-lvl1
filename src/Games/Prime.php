@@ -80,7 +80,7 @@ function getSuitablePrimes(int $number, array $primes = []): array
 function isPrime(int $number, array $primes): bool
 {
     foreach ($primes as $prime) {
-        if ($number % $prime === 0) {
+        if (($number % $prime === 0) && ($number !== $prime)) {
             return false;
         }
     }
