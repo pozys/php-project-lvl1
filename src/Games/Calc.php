@@ -33,7 +33,7 @@ function getQuestions(): array
         $operand = $operands[rand(0, $operandsCount - 1)];
         $arg1 = rand(0, 100);
         $arg2 = rand(0, 100);
-        $questions[] = implode(' '), [$arg1, $operand, $arg2]);
+        $questions[] = implode(' ', [$arg1, $operand, $arg2]);
     }
 
     return $questions;
