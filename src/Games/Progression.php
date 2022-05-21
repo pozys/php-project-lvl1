@@ -6,7 +6,6 @@ use function Php\Project\Lvl1\Engine\{
     getUserName,
     printRules,
     getRoundCount,
-    getSeparator,
     getGameResult,
     sayGoodbye
 };
@@ -33,7 +32,7 @@ function getQuestionsAnswers(): array
         $replaceableIndex = rand(0, count($sequence) - 1);
         $answers[] = $sequence[$replaceableIndex];
         $sequence[$replaceableIndex] = '..';
-        $questions[] = implode(getSeparator(), $sequence);
+        $questions[] = implode(' ', $sequence);
     }
 
     return [$questions, $answers];

@@ -6,7 +6,6 @@ use function Php\Project\Lvl1\Engine\{
     getUserName,
     printRules,
     getRoundCount,
-    getSeparator,
     getGameResult,
     sayGoodbye
 };
@@ -31,7 +30,7 @@ function getQuestionsAnswers(): array
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
         $arg1 = rand(0, 100);
         $arg2 = rand(0, 100);
-        $questions[] = implode(getSeparator(), [$arg1, $arg2]);
+        $questions[] = implode(' '), [$arg1, $arg2]);
         $answers[] = getRightAnswer($arg1, $arg2);
     }
 

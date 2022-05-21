@@ -20,11 +20,6 @@ function getRoundCount(): int
     return 3;
 }
 
-function getSeparator(): string
-{
-    return ' ';
-}
-
 function getAnswer(string $question): string
 {
     line('Question: %s', $question);

@@ -6,7 +6,6 @@ use function Php\Project\Lvl1\Engine\{
     getUserName,
     printRules,
     getRoundCount,
-    getSeparator,
     getGameResult,
     sayGoodbye
 };
