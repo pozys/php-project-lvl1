@@ -26,9 +26,11 @@ function play()
 function getQuestions(): array
 {
     $questions = [];
+    $minNumber = 0;
+    $maxNumber = 100000;
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $questions[] = rand(0, 100000);
+        $questions[] = rand($minNumber, $maxNumber);
     }
 
     return $questions;

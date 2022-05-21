@@ -28,11 +28,13 @@ function getQuestions(): array
     $questions = [];
     $operands = getOperands();
     $operandsCount = count($operands);
+    $minNumber = 0;
+    $maxNumber = 100;
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $operand = $operands[rand(0, $operandsCount - 1)];
-        $arg1 = rand(0, 100);
-        $arg2 = rand(0, 100);
+        $operand = $operands[rand($minNumber, $operandsCount - 1)];
+        $arg1 = rand($minNumber, $maxNumber);
+        $arg2 = rand($minNumber, $maxNumber);
         $questions[] = implode(' ', [$arg1, $operand, $arg2]);
     }
 

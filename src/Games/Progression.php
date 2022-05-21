@@ -26,12 +26,14 @@ function getQuestionsAnswers(): array
 {
     $questions = [];
     $answers = [];
+    $minNumber = 0;
+    $placeholder = '..';
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
         $sequence = getSequence();
-        $replaceableIndex = rand(0, count($sequence) - 1);
+        $replaceableIndex = rand($minNumber, count($sequence) - 1);
         $answers[] = $sequence[$replaceableIndex];
-        $sequence[$replaceableIndex] = '..';
+        $sequence[$replaceableIndex] = $placeholder;
         $questions[] = implode(' ', $sequence);
     }
 
@@ -49,8 +51,14 @@ function getSequenceLength(): int
 function getSequence(): array
 {
     $sequence = [];
-    $difference = rand(1, 25);
-    $current = rand(0, 25);
+
+    $minDifference = 1;
+    $maxDifference = 25;
+    $minInitial = 0;
+    $maxInitial = 25;
+
+    $difference = rand($minDifference, $maxDifference);
+    $current = rand($minInitial, $maxInitial);
 
     for ($i = 0, $length = getSequenceLength(); $i < $length; $i++, $current += $difference) {
         $sequence[] = $current;

@@ -26,10 +26,12 @@ function getQuestionsAnswers(): array
 {
     $questions = [];
     $answers = [];
+    $minNumber = 0;
+    $maxNumber = 100;
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $arg1 = rand(0, 100);
-        $arg2 = rand(0, 100);
+        $arg1 = rand($minNumber, $maxNumber);
+        $arg2 = rand($minNumber, $maxNumber);
         $questions[] = implode(' ', [$arg1, $arg2]);
         $answers[] = getRightAnswer($arg1, $arg2);
     }

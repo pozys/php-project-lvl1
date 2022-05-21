@@ -26,9 +26,11 @@ function play()
 function getQuestions(): array
 {
     $questions = [];
+    $minNumber = 0;
+    $maxNumber = 100;
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $questions[] = rand(1, 1000);
+        $questions[] = rand($minNumber, $maxNumber);
     }
 
     return $questions;
@@ -54,9 +56,10 @@ function getRightAnswer(int $question): string
 function getSuitablePrimes(int $number, array $primes = []): array
 {
     $threshold = ceil(sqrt($number));
+    $minPrime = 2;
 
     if ($primes === []) {
-        $primes[] = 2;
+        $primes[] = $minPrime;
     }
 
     $lastPrime = end($primes);
