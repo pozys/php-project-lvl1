@@ -56,7 +56,7 @@ function getSuitablePrimes(int $number, array $primes = []): array
 {
     $threshold = ceil(sqrt($number));
 
-    if ($primes = []) {
+    if ($primes === []) {
         $primes[] = 2;
     }
 
