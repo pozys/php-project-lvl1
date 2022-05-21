@@ -58,7 +58,7 @@ function getAnswers(array $questions): array
 
 function getRightAnswer(string $question): ?int
 {
-    if (empty($question)) {
+    if ($question === '') {
         return null;
     }
 
