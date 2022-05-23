@@ -30,7 +30,7 @@ function play()
 
         $answer = getMissingNumber($sequence);
         $answers[] = $answer;
-        $replaceableIndex = array_search($answer, $sequence);
+        $replaceableIndex = array_search($answer, $sequence, true);
         $sequence[$replaceableIndex] = $placeholder;
         $questions[] = implode(' ', $sequence);
     }
