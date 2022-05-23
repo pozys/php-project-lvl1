@@ -2,28 +2,11 @@
 
 namespace Php\Project\Lvl1\Games\Gcd;
 
-use function Php\Project\Lvl1\Engine\{
-    getUserName,
-    printRules,
-    getRoundCount,
-    getGameResult,
-    sayGoodbye
-};
+use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
 
 function play()
 {
-    $userName = getUserName();
-    printRules('Find the greatest common divisor of given numbers.');
-
-    [$questions, $answers] = getQuestionsAnswers();
-
-    $isWinner = getGameResult($questions, $answers, $userName);
-
-    sayGoodbye($isWinner, $userName);
-}
-
-function getQuestionsAnswers(): array
-{
+    $rules = 'Find the greatest common divisor of given numbers.';
     $questions = [];
     $answers = [];
     $minNumber = 0;
@@ -33,15 +16,10 @@ function getQuestionsAnswers(): array
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
         $questions[] = implode(' ', [$arg1, $arg2]);
-        $answers[] = getRightAnswer($arg1, $arg2);
+        $answers[] = nod($arg1, $arg2);
     }
 
-    return [$questions, $answers];
-}
-
-function getRightAnswer(int $arg1, int $arg2)
-{
-    return nod($arg1, $arg2);
+    runGame($answers, $questions, $rules);
 }
 
 function nod(int $a, int $b): int

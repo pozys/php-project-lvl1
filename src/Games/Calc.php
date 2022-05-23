@@ -2,31 +2,14 @@
 
 namespace Php\Project\Lvl1\Games\Calc;
 
-use function Php\Project\Lvl1\Engine\{
-    getUserName,
-    printRules,
-    getRoundCount,
-    getGameResult,
-    sayGoodbye
-};
+use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
 
 function play()
 {
-    $userName = getUserName();
-    printRules('What is the result of the expression?');
-
-    $questions = getQuestions();
-    $answers = getAnswers($questions);
-
-    $isWinner = getGameResult($questions, $answers, $userName);
-
-    sayGoodbye($isWinner, $userName);
-}
-
-function getQuestions(): array
-{
+    $rules = 'What is the result of the expression?';
     $questions = [];
-    $operands = getOperands();
+    $answers = [];
+    $operands = ['+', '-', '*'];
     $operandsCount = count($operands);
     $minNumber = 0;
     $maxNumber = 100;
@@ -35,43 +18,23 @@ function getQuestions(): array
         $operand = $operands[rand($minNumber, $operandsCount - 1)];
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
+
         $questions[] = implode(' ', [$arg1, $operand, $arg2]);
+        $answers[] = calculate($arg1, $arg2, $operand);
     }
 
-    return $questions;
+    runGame($answers, $questions, $rules);
 }
 
-function getOperands(): array
+function calculate(int $arg1, int $arg2, string $operand): ?int
 {
-    return ['+', '-', '*'];
-}
-
-function getAnswers(array $questions): array
-{
-    $answers = [];
-
-    foreach ($questions as $question) {
-        $answers[] = getRightAnswer($question);
-    }
-
-    return $answers;
-}
-
-function getRightAnswer(string $question): ?int
-{
-    if ($question === '') {
-        return null;
-    }
-
-    [$arg1, $operand, $arg2] = explode(' ', $question);
-
     switch ($operand) {
         case '+':
-            return (int) $arg1 + (int) $arg2;
+            return $arg1 + $arg2;
         case '-':
-            return (int) $arg1 - (int) $arg2;
+            return $arg1 - $arg2;
         case '*':
-            return (int) $arg1 * (int) $arg2;
+            return $arg1 * $arg2;
         default:
             return null;
     }

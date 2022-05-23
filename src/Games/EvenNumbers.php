@@ -2,52 +2,27 @@
 
 namespace Php\Project\Lvl1\Games\EvenNumbers;
 
-use function Php\Project\Lvl1\Engine\{
-    getUserName,
-    printRules,
-    getRoundCount,
-    getGameResult,
-    sayGoodbye
-};
+use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
 
 function play()
 {
-    $userName = getUserName();
-    printRules('Answer "yes" if the number is even, otherwise answer "no".');
-
-    $questions = getQuestions();
-    $answers = getAnswers($questions);
-
-    $isWinner = getGameResult($questions, $answers, $userName);
-
-    sayGoodbye($isWinner, $userName);
-}
-
-function getQuestions(): array
-{
+    $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
     $questions = [];
+    $answers = [];
+
     $minNumber = 0;
     $maxNumber = 100000;
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $questions[] = rand($minNumber, $maxNumber);
+        $question = rand($minNumber, $maxNumber);
+        $questions[] = $question;
+        $answers[] = isEven($question) ? 'yes' : 'no';
     }
 
-    return $questions;
+    runGame($answers, $questions, $rules);
 }
 
-function getAnswers(array $questions): array
+function isEven(int $number): bool
 {
-    $answers = [];
-
-    foreach ($questions as $question) {
-        $answers[] = getRightAnswer($question);
-    }
-
-    return $answers;
-}
-
-function getRightAnswer(int $number): string
-{
-    return ($number % 2 === 0) ? 'yes' : 'no';
+    return $number % 2 === 0;
 }

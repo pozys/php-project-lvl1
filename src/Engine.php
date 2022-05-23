@@ -3,65 +3,39 @@
 namespace Php\Project\Lvl1\Engine;
 
 use function cli\{line, prompt};
-use function Php\Project\Lvl1\Cli\getUserName as cliGetUserName;
+use function Php\Project\Lvl1\Cli\getUserName;
 
-function getUserName(): string
+function runGame(array $answers, array $questions, string $rules): void
 {
-    return cliGetUserName();
-}
-
-function printRules(string $rules): void
-{
+    $userName = getUserName();
     line($rules);
-}
 
-function getRoundCount(): int
-{
-    return 3;
-}
-
-function getAnswer(string $question): string
-{
-    line('Question: %s', $question);
-    return prompt('Your answer');
-}
-
-function getGameResult(array $questions, array $answers, string $userName): bool
-{
     $roundLimit = getRoundCount();
     $isWinner = true;
 
     for ($i = 0; ($i < $roundLimit) && $isWinner; $i++) {
         $question = (string) $questions[$i];
         $rightAnswer = (string) $answers[$i];
-        $userAnswer = getAnswer($question);
+
+        line('Question: %s', $question);
+        $userAnswer =  prompt('Your answer');
 
         if ($userAnswer === $rightAnswer) {
-            sayRightAnswer();
+            line('Correct!');
         } else {
-            sayWrongAnswer($userAnswer, $rightAnswer);
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $rightAnswer);
             $isWinner = false;
         }
     }
 
-    return $isWinner;
-}
-
-function sayRightAnswer()
-{
-    line('Correct!');
-}
-
-function sayWrongAnswer(string $userAnswer, string $rightAnswer)
-{
-    line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $rightAnswer);
-}
-
-function sayGoodbye(bool $isWinner, string $userName)
-{
     if ($isWinner) {
         line('Congratulations, %s!', $userName);
     } else {
         line("Let's try again, %s!", $userName);
     }
+}
+
+function getRoundCount(): int
+{
+    return 3;
 }

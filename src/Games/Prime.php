@@ -2,25 +2,15 @@
 
 namespace Php\Project\Lvl1\Games\Prime;
 
-use function Php\Project\Lvl1\Engine\{
-    getUserName,
-    printRules,
-    getRoundCount,
-    getGameResult,
-    sayGoodbye
-};
+use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
 
 function play()
 {
-    $userName = getUserName();
-    printRules('Answer "yes" if given number is prime. Otherwise answer "no".');
-
+    $rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $questions = getQuestions();
     $answers = getAnswers($questions);
 
-    $isWinner = getGameResult($questions, $answers, $userName);
-
-    sayGoodbye($isWinner, $userName);
+    runGame($answers, $questions, $rules);
 }
 
 function getQuestions(): array

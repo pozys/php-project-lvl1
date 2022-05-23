@@ -2,67 +2,46 @@
 
 namespace Php\Project\Lvl1\Games\Progression;
 
-use function Php\Project\Lvl1\Engine\{
-    getUserName,
-    printRules,
-    getRoundCount,
-    getGameResult,
-    sayGoodbye
-};
+use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
 
 function play()
 {
-    $userName = getUserName();
-    printRules('What number is missing in the progression?');
-
-    [$questions, $answers] = getQuestionsAnswers();
-
-    $isWinner = getGameResult($questions, $answers, $userName);
-
-    sayGoodbye($isWinner, $userName);
-}
-
-function getQuestionsAnswers(): array
-{
+    $rules = 'What number is missing in the progression?';
     $questions = [];
     $answers = [];
-    $minNumber = 0;
     $placeholder = '..';
 
     for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $sequence = getSequence();
-        $replaceableIndex = rand($minNumber, count($sequence) - 1);
-        $answers[] = $sequence[$replaceableIndex];
+        $minDifference = 1;
+        $maxDifference = 25;
+        $difference = rand($minDifference, $maxDifference);
+
+        $minInitial = 0;
+        $maxInitial = 25;
+        $current = rand($minInitial, $maxInitial);
+
+        $sequence = [];
+        $minLength = 5;
+        $maxLength = 15;
+
+        for ($j = 0, $length = rand($minLength, $maxLength); $j < $length; $j++, $current += $difference) {
+            $sequence[] = $current;
+        }
+
+        $answer = getMissingNumber($sequence);
+        $answers[] = $answer;
+        $replaceableIndex = array_search($answer, $sequence);
         $sequence[$replaceableIndex] = $placeholder;
         $questions[] = implode(' ', $sequence);
     }
 
-    return [$questions, $answers];
+    runGame($answers, $questions, $rules);
 }
 
-function getSequenceLength(): int
+function getMissingNumber(array $sequence): int
 {
-    $minLength = 5;
-    $maxLength = 15;
+    $minNumber = 0;
+    $replaceableIndex = rand($minNumber, count($sequence) - 1);
 
-    return rand($minLength, $maxLength);
-}
-
-function getSequence(): array
-{
-    $sequence = [];
-
-    $minDifference = 1;
-    $maxDifference = 25;
-    $minInitial = 0;
-    $maxInitial = 25;
-
-    $difference = rand($minDifference, $maxDifference);
-    $current = rand($minInitial, $maxInitial);
-
-    for ($i = 0, $length = getSequenceLength(); $i < $length; $i++, $current += $difference) {
-        $sequence[] = $current;
-    }
-
-    return $sequence;
+    return $sequence[$replaceableIndex];
 }
