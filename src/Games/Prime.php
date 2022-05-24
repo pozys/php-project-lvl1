@@ -51,7 +51,7 @@ function getSuitablePrimes(int $number, array $primes = []): array
 function isPrime(int $number, array $primes): bool
 {
     foreach ($primes as $prime) {
-        if (($number % $prime === 0) && ($number !== $prime)) {
+        if (($number % $prime === 0) && ($number !== $prime) || $prime > $number) {
             return false;
         }
     }
