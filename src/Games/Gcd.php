@@ -3,6 +3,7 @@
 namespace Php\Project\Lvl1\Games\Gcd;
 
 use function Php\Project\Lvl1\Engine\runGame;
+
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
 const RULES = 'Find the greatest common divisor of given numbers.';

@@ -3,6 +3,7 @@
 namespace Php\Project\Lvl1\Games\EvenNumbers;
 
 use function Php\Project\Lvl1\Engine\runGame;
+
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
 const RULES = 'Answer "yes" if the number is even, otherwise answer "no".';

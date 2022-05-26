@@ -3,6 +3,7 @@
 namespace Php\Project\Lvl1\Games\Calc;
 
 use function Php\Project\Lvl1\Engine\runGame;
+
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
 const RULES = 'What is the result of the expression?';
