@@ -2,28 +2,28 @@
 
 namespace Php\Project\Lvl1\Games\Calc;
 
-use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
+use function Php\Project\Lvl1\Engine\runGame;
+use const Php\Project\Lvl1\Engine\ROUND_COUNT;
+
+const RULES = 'What is the result of the expression?';
+const OPERANDS = ['+', '-', '*'];
 
 function play()
 {
-    $rules = 'What is the result of the expression?';
-    $questions = [];
-    $answers = [];
-    $operands = ['+', '-', '*'];
-    $operandsCount = count($operands);
+    $questionsAnswers = [];    
     $minNumber = 0;
     $maxNumber = 100;
 
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
-        $operand = $operands[rand($minNumber, $operandsCount - 1)];
+    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
+        $operand = OPERANDS[array_rand(OPERANDS)];
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
 
-        $questions[] = implode(' ', [$arg1, $operand, $arg2]);
-        $answers[] = calculate($arg1, $arg2, $operand);
+        $question = implode(' ', [$arg1, $operand, $arg2]);
+        $questionsAnswers[$question] = calculate($arg1, $arg2, $operand);
     }
 
-    runGame($answers, $questions, $rules);
+    runGame($questionsAnswers, RULES);
 }
 
 function calculate(int $arg1, int $arg2, string $operand): ?int

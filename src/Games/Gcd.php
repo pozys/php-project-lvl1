@@ -2,27 +2,28 @@
 
 namespace Php\Project\Lvl1\Games\Gcd;
 
-use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
+use function Php\Project\Lvl1\Engine\runGame;
+use const Php\Project\Lvl1\Engine\ROUND_COUNT;
+
+const RULES = 'Find the greatest common divisor of given numbers.';
 
 function play()
 {
-    $rules = 'Find the greatest common divisor of given numbers.';
-    $questions = [];
-    $answers = [];
+    $questionsAnswers = [];
     $minNumber = 0;
     $maxNumber = 100;
 
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
+    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
-        $questions[] = implode(' ', [$arg1, $arg2]);
-        $answers[] = nod($arg1, $arg2);
+        $question = implode(' ', [$arg1, $arg2]);
+        $questionsAnswers[$question] = getNOD($arg1, $arg2);
     }
 
-    runGame($answers, $questions, $rules);
+    runGame($questionsAnswers, RULES);
 }
 
-function nod(int $a, int $b): int
+function getNOD(int $a, int $b): int
 {
-    return $a === 0 ? $b : nod($b % $a, $a);
+    return $a === 0 ? $b : getNOD($b % $a, $a);
 }

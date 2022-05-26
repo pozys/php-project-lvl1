@@ -2,16 +2,17 @@
 
 namespace Php\Project\Lvl1\Games\Progression;
 
-use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
+use function Php\Project\Lvl1\Engine\runGame;
+use const Php\Project\Lvl1\Engine\ROUND_COUNT;
+
+const RULES = 'What number is missing in the progression?';
 
 function play()
 {
-    $rules = 'What number is missing in the progression?';
-    $questions = [];
-    $answers = [];
+    $questionsAnswers = [];
     $placeholder = '..';
 
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
+    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $minDifference = 1;
         $maxDifference = 25;
         $difference = rand($minDifference, $maxDifference);
@@ -29,13 +30,13 @@ function play()
         }
 
         $answer = getMissingNumber($sequence);
-        $answers[] = $answer;
         $replaceableIndex = array_search($answer, $sequence, true);
         $sequence[$replaceableIndex] = $placeholder;
-        $questions[] = implode(' ', $sequence);
+        $question = implode(' ', $sequence);
+        $questionsAnswers[$question] = $answer;
     }
 
-    runGame($answers, $questions, $rules);
+    runGame($questionsAnswers, RULES);
 }
 
 function getMissingNumber(array $sequence): int

@@ -2,24 +2,23 @@
 
 namespace Php\Project\Lvl1\Games\EvenNumbers;
 
-use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
+use function Php\Project\Lvl1\Engine\runGame;
+use const Php\Project\Lvl1\Engine\ROUND_COUNT;
+
+const RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function play()
 {
-    $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-    $questions = [];
-    $answers = [];
-
+    $questionsAnswers = [];
     $minNumber = 0;
     $maxNumber = 100000;
 
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
+    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $question = rand($minNumber, $maxNumber);
-        $questions[] = $question;
-        $answers[] = isEven($question) ? 'yes' : 'no';
+        $questionsAnswers[$question] = isEven($question) ? 'yes' : 'no';
     }
 
-    runGame($answers, $questions, $rules);
+    runGame($questionsAnswers, RULES);
 }
 
 function isEven(int $number): bool

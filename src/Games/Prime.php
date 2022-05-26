@@ -2,56 +2,35 @@
 
 namespace Php\Project\Lvl1\Games\Prime;
 
-use function Php\Project\Lvl1\Engine\{runGame, getRoundCount};
+use function Php\Project\Lvl1\Engine\runGame;
+use const Php\Project\Lvl1\Engine\ROUND_COUNT;
+
+const RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function play()
 {
-    $rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $questions = [];
-    $answers = [];
-
+    $questionsAnswers = [];
     $minNumber = 0;
     $maxNumber = 100;
 
-    for ($i = 0, $rounds = getRoundCount(); $i < $rounds; $i++) {
+    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $question = rand($minNumber, $maxNumber);
-        $questions[] = $question;
-
-        $primes = getSuitablePrimes($question);
-        $answers[] = isPrime($question, $primes) ? 'yes' : 'no';
+        $questionsAnswers[$question] = isPrime($question) ? 'yes' : 'no';
     }
 
-    runGame($answers, $questions, $rules);
+    runGame($questionsAnswers, RULES);
 }
 
-function getSuitablePrimes(int $number, array $primes = []): array
+function isPrime(int $number): bool
 {
-    $threshold = ceil(sqrt($number));
     $minPrime = 2;
 
-    if ($primes === []) {
-        $primes[] = $minPrime;
+    if ($number < $minPrime) {
+        return false;
     }
 
-    $lastPrime = end($primes);
-
-    if ($lastPrime >= $threshold) {
-        return $primes;
-    }
-
-    for ($i = $lastPrime + 1; $i <= $threshold; $i += 2) {
-        if (isPrime($i, $primes)) {
-            $primes[] = $i;
-        }
-    }
-
-    return $primes;
-}
-
-function isPrime(int $number, array $primes): bool
-{
-    foreach ($primes as $prime) {
-        if (($number % $prime === 0) && ($number !== $prime) || $prime > $number) {
+    for ($i = $minPrime, $threshold = ceil(sqrt($number)); $i <= $threshold; $i += 2) {
+        if (($number % $i === 0) && ($number !== $i)) {
             return false;
         }
     }

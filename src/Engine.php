@@ -3,39 +3,36 @@
 namespace Php\Project\Lvl1\Engine;
 
 use function cli\{line, prompt};
-use function Php\Project\Lvl1\Cli\getUserName;
 
-function runGame(array $answers, array $questions, string $rules): void
+const ROUND_COUNT = 3;
+
+function runGame(array $questionsAnswers, string $rules): void
 {
     $userName = getUserName();
     line($rules);
 
-    $roundLimit = getRoundCount();
-    $isWinner = true;
-
-    for ($i = 0; ($i < $roundLimit) && $isWinner; $i++) {
-        $question = (string) $questions[$i];
-        $rightAnswer = (string) $answers[$i];
-
-        line('Question: %s', $question);
+    foreach ($questionsAnswers as $question => $answer) {
+        line('Question: %s', (string) $question);
         $userAnswer =  prompt('Your answer');
+        $rightAnswer = (string) $answer;
 
         if ($userAnswer === $rightAnswer) {
             line('Correct!');
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $rightAnswer);
-            $isWinner = false;
+            line("Let's try again, %s!", $userName);
+            return;
         }
     }
 
-    if ($isWinner) {
-        line('Congratulations, %s!', $userName);
-    } else {
-        line("Let's try again, %s!", $userName);
-    }
+    line('Congratulations, %s!', $userName);
 }
 
-function getRoundCount(): int
+function getUserName(): string
 {
-    return 3;
+    line('Welcome to the Brain Games!');
+    $name = prompt('May I have your name?');
+    line("Hello, %s!", $name);
+
+    return $name;
 }
