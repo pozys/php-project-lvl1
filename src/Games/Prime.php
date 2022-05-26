@@ -30,7 +30,7 @@ function isPrime(int $number): bool
         return false;
     }
 
-    for ($i = $minPrime, $threshold = ceil(sqrt($number)); $i <= $threshold; $i += 2) {
+    for ($i = $minPrime, $threshold = ceil(sqrt($number)); $i <= $threshold; $i++) {
         if (($number % $i === 0) && ($number !== $i)) {
             return false;
         }

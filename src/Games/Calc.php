@@ -11,7 +11,7 @@ const OPERANDS = ['+', '-', '*'];
 
 function play()
 {
-    $questionsAnswers = [];    
+    $questionsAnswers = [];
     $minNumber = 0;
     $maxNumber = 100;
 
