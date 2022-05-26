@@ -21,16 +21,29 @@
 - Перейти в каталог с кодом из репозитория
 - Выполнить команду *make install*
 
-[Демонстрация установки](https://asciinema.org/a/oil39L1ILuQPL0TmOkvItkKM7)
+Демонстрация установки:
+
+[![asciicast](https://asciinema.org/a/oil39L1ILuQPL0TmOkvItkKM7.svg)](https://asciinema.org/a/oil39L1ILuQPL0TmOkvItkKM7)
+
 
 **Демонстрация процесса игры:**
 
-- [Калькулятор](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
+- Калькулятор:
 
-- [Прогрессия](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)
+[![asciicast](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt.svg)](https://asciinema.org/a/H4OQaowYH6SOmfbiTiAkZ1rnt)
 
-- [Определение четного числа](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf)
+- Прогрессия:
 
-- [Определение наибольшего общего делителя](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
+[![asciicast](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj.svg)](https://asciinema.org/a/GsZNXZJ41PF4UArL868l64IGj)
 
-- [Определение простого числа](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L)
+- Определение четного числа:
+
+[![asciicast](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf.svg)](https://asciinema.org/a/9NKY0GKzu4Wwxova9XKDsfMRf)
+
+- Определение наибольшего общего делителя:
+
+[![asciicast](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h.svg)](https://asciinema.org/a/SgHWklePJFoYkQNuVVu6hbO0h)
+
+- Определение простого числа:
+
+[![asciicast](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L.svg)](https://asciinema.org/a/vHVoyVWyv94qQESTaJCnfwq6L)
