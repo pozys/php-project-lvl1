@@ -43,7 +43,7 @@ function play()
         }
 
         $question = implode(' ', $sequence);
-        $rounds[$question] = compact('question', 'answer');
+        $rounds[] = compact('question', 'answer');
     }
 
     runGame($rounds, GAME_RULE);

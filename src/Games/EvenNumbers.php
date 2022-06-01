@@ -17,7 +17,7 @@ function play()
     for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
         $question = rand($minNumber, $maxNumber);
         $answer = isEven($question) ? 'yes' : 'no';
-        $rounds[$question] = compact('question', 'answer');
+        $rounds[] = compact('question', 'answer');
     }
 
     runGame($rounds, GAME_RULE);

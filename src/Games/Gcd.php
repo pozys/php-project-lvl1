@@ -19,7 +19,7 @@ function play()
         $arg2 = rand($minNumber, $maxNumber);
         $question = implode(' ', [$arg1, $arg2]);
         $answer = getGcd($arg1, $arg2);
-        $rounds[$question] = compact('question', 'answer');
+        $rounds[] = compact('question', 'answer');
     }
 
     runGame($rounds, GAME_RULE);

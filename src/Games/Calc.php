@@ -24,7 +24,7 @@ function play()
 
         $question = implode(' ', [$arg1, $operator, $arg2]);
         $answer = calculate($arg1, $arg2, $operator);
-        $rounds[$question] = compact('question', 'answer');
+        $rounds[] = compact('question', 'answer');
     }
 
     runGame($rounds, GAME_RULE);
