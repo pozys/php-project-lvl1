@@ -28,17 +28,18 @@ function play()
 
         $length = rand($minLength, $maxLength);
         $replaceableIndex = rand($minInitial, count($sequence) - 1);
+        $answer = null;
 
         for ($j = 0; $j < $length; $j++, $current += $difference) {
             if ($j === $replaceableIndex) {
                 $sequence[] = $placeholder;
+                $answer = $current;
             } else {
                 $sequence[] = $current;
             }
         }
 
-        $question = implode(' ', $sequence);
-        $answer = $sequence[$replaceableIndex];
+        $question = implode(' ', $sequence);        
         $rounds[$question] = compact('question', 'answer');
     }
 
