@@ -13,21 +13,24 @@ function play()
     $rounds = [];
     $placeholder = '..';
 
+    $minDifference = 1;
+    $maxDifference = 25;
+
+    $minInitial = 0;
+    $maxInitial = 25;
+
+    $minSequenceLength = 5;
+    $maxSequenceLength = 15;
+
     for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
-        $minDifference = 1;
-        $maxDifference = 25;
         $difference = rand($minDifference, $maxDifference);
 
-        $minInitial = 0;
-        $maxInitial = 25;
         $current = rand($minInitial, $maxInitial);
 
         $sequence = [];
-        $minLength = 5;
-        $maxLength = 15;
 
-        $length = rand($minLength, $maxLength);
-        $replaceableIndex = rand($minInitial, count($sequence) - 1);
+        $length = rand($minSequenceLength, $maxSequenceLength);
+        $replaceableIndex = rand($minInitial, $length - 1);
         $answer = null;
 
         for ($j = 0; $j < $length; $j++, $current += $difference) {
@@ -39,7 +42,7 @@ function play()
             }
         }
 
-        $question = implode(' ', $sequence);        
+        $question = implode(' ', $sequence);
         $rounds[$question] = compact('question', 'answer');
     }
 
