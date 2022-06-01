@@ -6,7 +6,7 @@ use function Php\Project\Lvl1\Engine\runGame;
 
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
-const RULES = 'What number is missing in the progression?';
+const GAME_RULE = 'What number is missing in the progression?';
 
 function play()
 {
@@ -26,24 +26,21 @@ function play()
         $minLength = 5;
         $maxLength = 15;
 
-        for ($j = 0, $length = rand($minLength, $maxLength); $j < $length; $j++, $current += $difference) {
-            $sequence[] = $current;
+        $length = rand($minLength, $maxLength);
+        $replaceableIndex = rand($minInitial, count($sequence) - 1);
+
+        for ($j = 0; $j < $length; $j++, $current += $difference) {
+            if ($j === $replaceableIndex) {
+                $sequence = $placeholder;
+            } else {
+                $sequence[] = $current;
+            }
         }
 
-        $answer = getMissingNumber($sequence);
-        $replaceableIndex = array_search($answer, $sequence, true);
-        $sequence[$replaceableIndex] = $placeholder;
         $question = implode(' ', $sequence);
-        $questionsAnswers[$question] = $answer;
+        $answer = $sequence[$replaceableIndex];
+        $questionsAnswers[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, RULES);
-}
-
-function getMissingNumber(array $sequence): int
-{
-    $minNumber = 0;
-    $replaceableIndex = rand($minNumber, count($sequence) - 1);
-
-    return $sequence[$replaceableIndex];
+    runGame($questionsAnswers, GAME_RULE);
 }

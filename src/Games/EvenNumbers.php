@@ -6,7 +6,7 @@ use function Php\Project\Lvl1\Engine\runGame;
 
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
-const RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+const GAME_RULE = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function play()
 {
@@ -16,10 +16,11 @@ function play()
 
     for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $question = rand($minNumber, $maxNumber);
-        $questionsAnswers[$question] = isEven($question) ? 'yes' : 'no';
+        $answer = isEven($question) ? 'yes' : 'no';
+        $questionsAnswers[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, RULES);
+    runGame($questionsAnswers, GAME_RULE);
 }
 
 function isEven(int $number): bool

@@ -2,12 +2,14 @@
 
 namespace Php\Project\Lvl1\Games\Calc;
 
+use Error;
+
 use function Php\Project\Lvl1\Engine\runGame;
 
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
-const RULES = 'What is the result of the expression?';
-const OPERANDS = ['+', '-', '*'];
+const GAME_RULE = 'What is the result of the expression?';
+const OPERATORS = ['+', '-', '*'];
 
 function play()
 {
@@ -16,20 +18,21 @@ function play()
     $maxNumber = 100;
 
     for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
-        $operand = OPERANDS[array_rand(OPERANDS)];
+        $operator = OPERATORS[array_rand(OPERATORS)];
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
 
-        $question = implode(' ', [$arg1, $operand, $arg2]);
-        $questionsAnswers[$question] = calculate($arg1, $arg2, $operand);
+        $question = implode(' ', [$arg1, $operator, $arg2]);
+        $answer = calculate($arg1, $arg2, $operator);
+        $questionsAnswers[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, RULES);
+    runGame($questionsAnswers, GAME_RULE);
 }
 
-function calculate(int $arg1, int $arg2, string $operand): ?int
+function calculate(int $arg1, int $arg2, string $operator): ?int
 {
-    switch ($operand) {
+    switch ($operator) {
         case '+':
             return $arg1 + $arg2;
         case '-':
@@ -37,6 +40,6 @@ function calculate(int $arg1, int $arg2, string $operand): ?int
         case '*':
             return $arg1 * $arg2;
         default:
-            return null;
+            throw new Error("Unknown operator: ${operator}");
     }
 }

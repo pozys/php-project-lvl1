@@ -1,26 +1,26 @@
-install: # Установка зависимостей
+install:
 	composer install
 
-brain-games: # Запуск программы
+brain-games:
 	./bin/brain-games
 
-brain-even: # Запуск игры "Проверка на чётность"
+brain-even:
 	./bin/brain-even
 
-brain-calc: # Запуск игры "Калькулятор"
+brain-calc:
 	./bin/brain-calc
 
-brain-gcd: # Запуск игры "НОД"
+brain-gcd:
 	./bin/brain-gcd
 
-brain-progression: # Запуск игры "Арифметическая прогрессия"
+brain-progression:
 	./bin/brain-progression
 
-brain-prime: # Запуск игры "Простое ли число?"
+brain-prime:
 	./bin/brain-prime
 
-validate: # Валидация пакета
+validate:
 	composer validate
 
-lint: # Проверка качества кода линтером
-	composer exec --verbose phpcs -- --standard=PSR12 src bin src/Games
+lint:
+	composer exec --verbose phpcs -- --standard=PSR12 src bin

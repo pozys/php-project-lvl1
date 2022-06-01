@@ -6,12 +6,12 @@ use function cli\{line, prompt};
 
 const ROUND_COUNT = 3;
 
-function runGame(array $questionsAnswers, string $rules): void
+function runGame(array $rounds, string $gameRule): void
 {
     $userName = getUserName();
-    line($rules);
+    line($gameRule);
 
-    foreach ($questionsAnswers as $question => $answer) {
+    foreach ($rounds as ['question' => $question, 'answer' => $answer]) {
         line('Question: %s', (string) $question);
         $userAnswer =  prompt('Your answer');
         $rightAnswer = (string) $answer;

@@ -6,7 +6,7 @@ use function Php\Project\Lvl1\Engine\runGame;
 
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
-const RULES = 'Find the greatest common divisor of given numbers.';
+const GAME_RULE = 'Find the greatest common divisor of given numbers.';
 
 function play()
 {
@@ -18,13 +18,14 @@ function play()
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
         $question = implode(' ', [$arg1, $arg2]);
-        $questionsAnswers[$question] = getNOD($arg1, $arg2);
+        $answer = getGcd($arg1, $arg2);
+        $questionsAnswers[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, RULES);
+    runGame($questionsAnswers, GAME_RULE);
 }
 
-function getNOD(int $a, int $b): int
+function getGcd(int $a, int $b): int
 {
-    return $a === 0 ? $b : getNOD($b % $a, $a);
+    return $a === 0 ? $b : getGcd($b % $a, $a);
 }

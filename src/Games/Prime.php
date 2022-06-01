@@ -6,7 +6,7 @@ use function Php\Project\Lvl1\Engine\runGame;
 
 use const Php\Project\Lvl1\Engine\ROUND_COUNT;
 
-const RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const GAME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function play()
 {
@@ -16,10 +16,11 @@ function play()
 
     for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
         $question = rand($minNumber, $maxNumber);
-        $questionsAnswers[$question] = isPrime($question) ? 'yes' : 'no';
+        $answer = isPrime($question) ? 'yes' : 'no';
+        $questionsAnswers[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, RULES);
+    runGame($questionsAnswers, GAME_RULE);
 }
 
 function isPrime(int $number): bool
