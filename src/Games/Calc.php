@@ -30,7 +30,7 @@ function play()
     runGame($rounds, GAME_RULE);
 }
 
-function calculate(int $arg1, int $arg2, string $operator): ?int
+function calculate(int $arg1, int $arg2, string $operator): int
 {
     switch ($operator) {
         case '+':
