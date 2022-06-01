@@ -10,17 +10,17 @@ const GAME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".
 
 function play()
 {
-    $questionsAnswers = [];
+    $rounds = [];
     $minNumber = 0;
     $maxNumber = 100;
 
-    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
+    for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
         $question = rand($minNumber, $maxNumber);
         $answer = isPrime($question) ? 'yes' : 'no';
-        $questionsAnswers[$question] = compact('question', 'answer');
+        $rounds[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, GAME_RULE);
+    runGame($rounds, GAME_RULE);
 }
 
 function isPrime(int $number): bool

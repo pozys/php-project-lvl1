@@ -10,17 +10,17 @@ const GAME_RULE = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function play()
 {
-    $questionsAnswers = [];
+    $rounds = [];
     $minNumber = 0;
     $maxNumber = 100000;
 
-    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
+    for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
         $question = rand($minNumber, $maxNumber);
         $answer = isEven($question) ? 'yes' : 'no';
-        $questionsAnswers[$question] = compact('question', 'answer');
+        $rounds[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, GAME_RULE);
+    runGame($rounds, GAME_RULE);
 }
 
 function isEven(int $number): bool

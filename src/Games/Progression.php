@@ -10,10 +10,10 @@ const GAME_RULE = 'What number is missing in the progression?';
 
 function play()
 {
-    $questionsAnswers = [];
+    $rounds = [];
     $placeholder = '..';
 
-    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
+    for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
         $minDifference = 1;
         $maxDifference = 25;
         $difference = rand($minDifference, $maxDifference);
@@ -31,7 +31,7 @@ function play()
 
         for ($j = 0; $j < $length; $j++, $current += $difference) {
             if ($j === $replaceableIndex) {
-                $sequence = $placeholder;
+                $sequence[] = $placeholder;
             } else {
                 $sequence[] = $current;
             }
@@ -39,8 +39,8 @@ function play()
 
         $question = implode(' ', $sequence);
         $answer = $sequence[$replaceableIndex];
-        $questionsAnswers[$question] = compact('question', 'answer');
+        $rounds[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, GAME_RULE);
+    runGame($rounds, GAME_RULE);
 }

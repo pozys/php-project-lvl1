@@ -10,19 +10,19 @@ const GAME_RULE = 'Find the greatest common divisor of given numbers.';
 
 function play()
 {
-    $questionsAnswers = [];
+    $rounds = [];
     $minNumber = 0;
     $maxNumber = 100;
 
-    for ($i = 0, $rounds = ROUND_COUNT; $i < $rounds; $i++) {
+    for ($i = 0, $roundCount = ROUND_COUNT; $i < $roundCount; $i++) {
         $arg1 = rand($minNumber, $maxNumber);
         $arg2 = rand($minNumber, $maxNumber);
         $question = implode(' ', [$arg1, $arg2]);
         $answer = getGcd($arg1, $arg2);
-        $questionsAnswers[$question] = compact('question', 'answer');
+        $rounds[$question] = compact('question', 'answer');
     }
 
-    runGame($questionsAnswers, GAME_RULE);
+    runGame($rounds, GAME_RULE);
 }
 
 function getGcd(int $a, int $b): int
